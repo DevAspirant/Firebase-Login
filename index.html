@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <style>
             body{
                 background: #fff;
@@ -13,12 +14,18 @@
                 font-family: 'Courier New', Courier, monospace;
             }
 
-            .main-div {
+            .main-div, .loggedin-div {
                 width: 20%;
                 margin: 0px auto;
                 /* margin-top: 150%; */
                 padding: 20px;
             }
+
+            /* .main-div {
+                display:none;
+            } */
+
+
             .main-div input {
                 display: block;
                 border: 1px solid #ccc;
@@ -34,7 +41,7 @@
                 border: 1px solid #999;
             }
 
-            .main-div button{
+            .main-div button, .loggedin-div button{
                 background: #5d8ffc;
                 color: #fff;
                 border: 0px;
@@ -47,7 +54,7 @@
                 -moz-transition: .3s;
             }
 
-            .main-div button:hover{
+            .main-div button:hover, .loggedin-div button:hover{
                 background: #fff;
                 color: #5d8ffc;
                 border: 1px solid #55dd88;
@@ -57,11 +64,43 @@
         </style>
     </head>
     <body>
-        <div class="main-div">
+        <div id="login_div" class="main-div">
             <h3> Firebase Web Login </h3>
-            <input type='email' placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button>Login </button> 
+            <input type='email' placeholder="Email" id="email_field"/>
+            <input type="password" placeholder="Password" id="password_field"/>
+            <button onclick="login()">Login </button> 
         </div>
-    </body>
+        <div id="user_div" class="loggedin-div">
+            <h3> Welcome User </h3>
+            <p id="user_para"> Welcome to firebase login </p>
+            <button onclick="logout()">Logout</button>
+        </div>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.9.3/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAjHs6EZMxRxi7OWfImEW_hKi7OZOrZb_E",
+    authDomain: "login-bee75.firebaseapp.com",
+    databaseURL: "https://login-bee75.firebaseio.com",
+    projectId: "login-bee75",
+    storageBucket: "login-bee75.appspot.com",
+    messagingSenderId: "447358348623",
+    appId: "1:447358348623:web:016ed162cb5f4105be293a",
+    measurementId: "G-DY2ND6H4TQ"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
+<script src="index.js"></script>
+</body>
 </html>
